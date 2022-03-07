@@ -1,0 +1,21 @@
+package Utils;
+
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+
+import java.util.concurrent.TimeUnit;
+
+public class Utilities {
+
+    AndroidDriver<AndroidElement> driver;
+
+    public Utilities(AndroidDriver<AndroidElement> driver){
+        this.driver = driver;
+    }
+
+    public void scrollTillTextVisible(String countryName){
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text("+countryName+"))");
+    }
+
+}
